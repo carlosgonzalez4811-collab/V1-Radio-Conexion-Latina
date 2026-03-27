@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Radio Conexión Latina Edmonton | Premium</title>
+<meta name="description" content="La nueva era de la radio latina en Alberta. Noticias IA, comunidad y música 24/7." />
+
+<meta name="theme-color" content="#07101d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+/* === TU CSS ORIGINAL PRESERVADO Y OPTIMIZADO === */
+:root {
+  --bg:#07101d; --bg2:#0b1424; --panel:rgba(11,19,35,.82);
+  --line:rgba(255,255,255,.09); --text:#f8f9ff; --muted:#b9c3db;
+  --pink:#ff4d8d; --coral:#ff6b4d; --yellow:#ffd44d; --cyan:#45e0ff; --violet:#8b5cf6;
+  --shadow:0 24px 60px rgba(0,0,0,.35); --radius-xl:30px; --max:1280px;
+}
+
+* { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { 
+  margin:0; color:var(--text); font-family: 'Inter', sans-serif; 
+  background: var(--bg); min-height:100vh; overflow-x:hidden;
+}
+
+/* === INYECCIÓN QUIRÚRGICA: VIDEO BACKGROUND === */
+.video-background {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  object-fit: cover; z-index: -2; opacity: 0.4; pointer-events: none;
+  mix-blend-mode: screen; /* Fusión armónica con tus colores oscuros */
+}
+.video-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg) 90%);
+  z-index: -1;
+}
+
+/* UI Components */
+.container { width: min(var(--max), 90%); margin: 0 auto; }
+.glass { background: var(--panel); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--line); border-radius: var(--radius-xl); }
+
+/* Header & Brand */
+.topbar { position: sticky; top: 0; z-index: 100; background: rgba(7,16,29,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 12px 0; }
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 15px; }
+.brand img { width: 55px; height: 55px; border-radius: 14px; border: 1px solid var(--yellow); }
+.brand-h1 { font-size: 1.2rem; background: linear-gradient(90deg, #fff, var(--yellow)); -webkit-background-clip: text; color: transparent; margin: 0; }
+
+/* Main Player Section */
+.hero { padding: 60px 0; text-align: center; }
+.play-btn-hero { 
+  background: linear-gradient(135deg, var(--pink), var(--coral)); 
+  border: none; padding: 18px 40px; border-radius: 40px; 
+  font-weight: bold; font-size: 1.2rem; color: #fff; 
+  box-shadow: 0 10px 30px rgba(255,77,141,0.4); cursor: pointer;
+}
+
+/* Grid IA & News */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+.card { padding: 25px; transition: 0.3s; }
+.card:hover { transform: translateY(-5px); border-color: var(--cyan); }
+.card img { width: 100%; height: 200px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
+
+/* Sticky Footer Player */
+.player-dock { 
+  position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); 
+  width: min(92vw, 450px); padding: 15px 25px; 
+  display: flex; align-items: center; justify-content: space-between; 
+  z-index: 200; box-shadow: var(--shadow);
+}
+</style>
+</head>
+<body>
+
+<video class="video-background" autoplay loop muted playsinline>
+  <source src="assets/3ba6ee9d-c499-4083-9656-52fa7237856e.mp4" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
+
+<header class="topbar">
+  <div class="container header-flex">
+    <div class="brand">
+      <img src="assets/logo-oficial.png" alt="RCL Logo">
+      <div class="brand-text">
+        <h1 class="brand-h1">Conexión Latina</h1>
+        <p style="font-size: 10px; color: var(--pink); letter-spacing: 2px;">EDMONTON, AB</p>
+      </div>
+    </div>
+    <div style="background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+      <span style="color: var(--yellow);">ES</span> | EN | FR
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div style="margin-bottom: 20px;">
+      <span style="background: rgba(255,77,141,0.2); color: var(--pink); padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid var(--pink);">🔴 EN VIVO</span>
+    </div>
+    <h2 style="font-size: 3rem; margin-bottom: 20px; letter-spacing: -2px;">La Radio que nos <span style="color: var(--yellow);">Une.</span></h2>
+    <button class="play-btn-hero" onclick="togglePlay()">▶ ESCUCHAR AHORA</button>
+  </section>
+
+  <section class="section">
+    <h3 style="font-size: 1.5rem; margin-bottom: 25px;">🤖 Flash Informativo IA</h3>
+    <div class="grid">
+      <div class="card glass">
+        <img src="assets/noticia-1.png" alt="Noticia IA">
+        <h4 style="margin-bottom: 10px;">Noticias de Edmonton en tiempo real</h4>
+        <p style="font-size: 14px; color: var(--muted);">Nuestra IA procesa las noticias más relevantes de Alberta para mantenerte informado cada hora.</p>
+      </div>
+      <div class="card glass">
+        <img src="assets/podcast-1.png" alt="Podcast">
+        <h4 style="margin-bottom: 10px;">Historias Latinas Podcast</h4>
+        <p style="font-size: 14px; color: var(--muted);">Entrevistas con emprendedores y líderes de nuestra comunidad en Canadá.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="player-dock glass">
+  <div style="display: flex; flex-direction: column;">
+    <span style="font-size: 10px; color: var(--pink); font-weight: bold;">SONANDO AHORA</span>
+    <span id="track-title" style="font-size: 14px; font-weight: 600;">Conectando...</span>
+  </div>
+  <button id="playBtn" onclick="togglePlay()" style="width: 50px; height: 50px; border-radius: 50%; background: var(--yellow); border: none; font-size: 20px; cursor: pointer; display: grid; place-items: center; box-shadow: 0 0 15px rgba(255,212,77,0.4);">▶</button>
+</div>
+
+<script>
+const STREAM_URL = "https://radioconexionlatina.com/radio/8000/radio.mp3";
+const audio = new Audio();
+let isPlaying = false;
+
+function togglePlay() {
+  const btn = document.getElementById('playBtn');
+  if (!isPlaying) {
+    audio.src = STREAM_URL;
+    audio.play();
+    btn.innerHTML = "⏸";
+    isPlaying = true;
+  } else {
+    audio.pause();
+    audio.src = "";
+    btn.innerHTML = "▶";
+    isPlaying = false;
+  }
+}
+
+async function updateMeta() {
+  try {
+    const res = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
+    const data = await res.json();
+    document.getElementById('track-title').innerText = data.now_playing.song.text;
+  } catch(e) { 
+    document.getElementById('track-title').innerText = "Radio Conexión Latina Edmonton";
+  }
+}
+setInterval(updateMeta, 10000);
+updateMeta();
+</script>
+
+</body>
+</html>
