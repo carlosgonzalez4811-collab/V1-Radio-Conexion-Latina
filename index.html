@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Radio Conexión Latina Edmonton | En Vivo</title>
+<meta name="description" content="Radio comunitaria premium. IA, podcasts, y cultura latina desde Alberta." />
+<meta name="theme-color" content="#07101d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+/* === VARIABLES & RESET === */
+:root {
+  --bg-dark: rgba(7, 16, 29, 0.85);
+  --glass: rgba(11, 19, 35, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --pink: #ff4d8d; --yellow: #ffd44d; --cyan: #45e0ff; --text: #f8f9ff;
+  --font: 'Inter', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font); color: var(--text); }
+body { min-height: 100vh; background-color: #000; overflow-x: hidden; }
+a { text-decoration: none; }
+
+/* === VIDEO BACKGROUND (Inmersivo) === */
+.video-bg {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  object-fit: cover; z-index: -2; opacity: 0.6;
+}
+.overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+  z-index: -1;
+}
+
+/* === ESTRUCTURA BASE === */
+.container { width: min(1200px, 90%); margin: 0 auto; }
+.glass-panel {
+  background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border); border-radius: 24px;
+}
+
+/* === TOPBAR & HEADER === */
+.topbar {
+  position: sticky; top: 0; z-index: 90;
+  background: rgba(5, 9, 20, 0.7); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border); padding: 12px 0;
+}
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 15px; }
+.brand img { width: 55px; height: 55px; border-radius: 14px; object-fit: cover; border: 1px solid var(--yellow); }
+.brand-text h1 { font-size: 1.2rem; background: linear-gradient(90deg, #fff, var(--yellow)); -webkit-background-clip: text; color: transparent; }
+.brand-text p { font-size: 0.75rem; color: var(--pink); letter-spacing: 1px; }
+
+/* i18n Selector */
+.lang-switcher { display: flex; gap: 10px; font-size: 0.85rem; font-weight: 600; background: rgba(0,0,0,0.5); padding: 5px 12px; border-radius: 20px; }
+.lang-btn { cursor: pointer; opacity: 0.5; transition: 0.3s; }
+.lang-btn.active { opacity: 1; color: var(--cyan); }
+
+/* === HERO SECTION === */
+.hero { padding: 10vh 0; text-align: center; }
+.live-badge { display: inline-block; background: rgba(255, 77, 141, 0.2); border: 1px solid var(--pink); color: var(--pink); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 20px; animation: pulse 2s infinite; }
+.hero h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+.hero p { font-size: 1.1rem; color: #b9c3db; max-width: 600px; margin: 0 auto 30px auto; }
+.play-hero-btn { background: linear-gradient(135deg, var(--pink), #ff6c7a); border: none; padding: 15px 35px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 77, 141, 0.4); transition: transform 0.2s; }
+.play-hero-btn:hover { transform: translateY(-3px); }
+
+/* === GRID SECTIONS (IA & Podcasts) === */
+.section-title { font-size: 1.8rem; margin: 40px 0 20px 0; display: flex; align-items: center; gap: 10px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 60px; }
+.card { padding: 20px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s; }
+.card:hover { transform: translateY(-5px); border-color: var(--cyan); }
+.card img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
+.tag { font-size: 0.7rem; letter-spacing: 1px; padding: 4px 10px; border-radius: 10px; align-self: flex-start; }
+.tag.ia { background: rgba(69, 224, 255, 0.2); color: var(--cyan); }
+
+/* === STICKY PLAYER === */
+.player-dock { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: min(90%, 450px); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; z-index: 100; box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
+.player-info { display: flex; flex-direction: column; gap: 4px; }
+.now-playing-label { font-size: 0.7rem; color: var(--pink); text-transform: uppercase; letter-spacing: 1px; }
+.song-title { font-size: 0.95rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+.dock-play-btn { width: 50px; height: 50px; border-radius: 50%; background: var(--yellow); border: none; color: #000; font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; box-shadow: 0 0 20px rgba(255, 212, 77, 0.5); }
+
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,77,141,0.4); } 70% { box-shadow: 0 0 0 10px rgba(255,77,141,0); } 100% { box-shadow: 0 0 0 0 rgba(255,77,141,0); } }
+</style>
+</head>
+<body>
+
+<video class="video-bg" autoplay loop muted playsinline>
+  <source src="assets/hero-video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<header class="topbar">
+  <div class="container header-flex">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Logo RCL">
+      <div class="brand-text">
+        <h1 data-es="Conexión Latina" data-en="Latin Connection" data-fr="Connexion Latine">Conexión Latina</h1>
+        <p>EDMONTON</p>
+      </div>
+    </div>
+    <div class="lang-switcher">
+      <span class="lang-btn active" onclick="setLang('es')">ES</span>
+      <span class="lang-btn" onclick="setLang('en')">EN</span>
+      <span class="lang-btn" onclick="setLang('fr')">FR</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero container">
+  <div class="live-badge">🔴 <span data-es="EN VIVO AHORA" data-en="LIVE NOW" data-fr="EN DIRECT">EN VIVO AHORA</span></div>
+  <h2 data-es="La Voz que Conecta Alberta." data-en="The Voice Connecting Alberta." data-fr="La Voix qui Connecte l'Alberta.">La Voz que Conecta Alberta.</h2>
+  <p data-es="Tecnología IA, noticias comunitarias y la mejor música urbana y tropical 24/7." data-en="AI technology, community news, and the best tropical music 24/7." data-fr="Technologie IA, actualités et la meilleure musique tropicale 24/7.">Tecnología IA, noticias comunitarias y la mejor música urbana y tropical 24/7.</p>
+  <button class="play-hero-btn" onclick="toggleRadio()">▶ <span data-es="Sintonizar Radio" data-en="Tune In Radio" data-fr="Écouter la Radio">Sintonizar Radio</span></button>
+</section>
+
+<div class="container">
+  <h3 class="section-title">🤖 <span data-es="Flash Informativo IA" data-en="AI News Flash" data-fr="Flash Info IA">Flash Informativo IA</span></h3>
+  <div class="grid">
+    <div class="card glass-panel">
+      <img src="assets/card-ia.png" alt="Noticia IA">
+      <span class="tag ia">IA GENERATED • YEG</span>
+      <h4 data-es="Nuevas regulaciones para negocios en Edmonton" data-en="New regulations for YEG businesses">Nuevas regulaciones para negocios en Edmonton</h4>
+      <p style="font-size: 0.85rem; color: #b9c3db;">Resumen automático generado desde fuentes gubernamentales sobre el impacto en la comunidad hispana...</p>
+    </div>
+    <div class="card glass-panel">
+      <img src="assets/card-podcast.png" alt="Podcast">
+      <span class="tag" style="background: rgba(255, 212, 77, 0.2); color: var(--yellow);">🎙️ PODCAST</span>
+      <h4 data-es="Historias de Éxito: Emprendedores Latinos" data-en="Success Stories: Latin Entrepreneurs">Historias de Éxito: Emprendedores Latinos</h4>
+      <p style="font-size: 0.85rem; color: #b9c3db;">Escucha el último episodio bajo demanda. Transcripción multilenguaje disponible.</p>
+    </div>
+  </div>
+</div>
+
+<div class="player-dock glass-panel">
+  <div class="player-info">
+    <span class="now-playing-label" data-es="SONANDO AHORA" data-en="NOW PLAYING" data-fr="EN LECTURE">SONANDO AHORA</span>
+    <span class="song-title" id="track-title">Conectando al servidor...</span>
+  </div>
+  <button class="dock-play-btn" id="playBtn" onclick="toggleRadio()">▶</button>
+</div>
+
+<script>
+// 1. AzuraCast Stream Logic
+const streamUrl = "https://radioconexionlatina.com/radio/8000/radio.mp3";
+const audio = new Audio();
+let isPlaying = false;
+
+function toggleRadio() {
+  const btn = document.getElementById('playBtn');
+  if (!isPlaying) {
+    audio.src = streamUrl;
+    audio.play();
+    btn.innerHTML = "⏸";
+    isPlaying = true;
+  } else {
+    audio.pause();
+    audio.src = "";
+    btn.innerHTML = "▶";
+    isPlaying = false;
+  }
+}
+
+// 2. Multilenguaje Inteligente
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    el.innerText = el.getAttribute('data-' + lang);
+  });
+}
+
+// 3. Metadatos (Now Playing)
+async function fetchMeta() {
+  try {
+    const res = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
+    const data = await res.json();
+    document.getElementById('track-title').innerText = data.now_playing.song.text || "Radio Conexión Latina";
+  } catch(e) { document.getElementById('track-title').innerText = "Radio Conexión Latina - Edmonton"; }
+}
+setInterval(fetchMeta, 10000);
+fetchMeta();
+</script>
+
+</body>
+</html>
