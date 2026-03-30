@@ -1,45 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Radio Conexión Latina</title>
-<style>
-:root{--bg:#07101d;--pink:#ff4d8d;--yellow:#ffd44d;--text:#f8f9ff;--glass:rgba(11,19,35,0.85)}
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,sans-serif}
-body{background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
-.v-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-2;opacity:0.35;mix-blend-mode:screen;pointer-events:none}
-.ov{position:fixed;top:0;left:0;width:100vw;height:100vh;background:radial-gradient(circle,transparent,var(--bg) 95%);z-index:-1}
-header{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(7,16,29,0.7);border-bottom:1px solid rgba(255,255,255,0.1);padding:15px 20px}
-.nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:10px}.brand img{width:40px;height:40px;border-radius:8px;border:1px solid var(--yellow)}
-main{padding:40px 20px 120px;text-align:center;max-width:600px;margin:0 auto}
-h2{font-size:2.2rem;font-weight:900;margin-bottom:30px;letter-spacing:-1px}
-.card{background:var(--glass);border-radius:24px;padding:20px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.08);text-align:left}
-.card img{width:100%;height:160px;border-radius:15px;object-fit:cover;margin-bottom:15px;background:#161d2b}
-.player{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);width:90%;max-width:400px;background:rgba(11,19,35,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:50px;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 15px 40px rgba(0,0,0,0.5);z-index:200;border:1px solid rgba(255,255,255,0.1)}
-.btn{width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;font-size:20px;cursor:pointer;box-shadow:0 0 15px rgba(255,212,77,0.4)}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Radio Conexión Latina Edmonton</title>
+    <style>
+        :root { --bg:#07101d; --pink:#ff4d8d; --yellow:#ffd44d; --text:#f8f9ff; --glass:rgba(11,19,35,0.85); }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system, sans-serif; }
+        body { background:var(--bg); color:var(--text); overflow-x:hidden; min-height:100vh; }
+        
+        /* Capas de Fondo */
+        .v-bg { position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-2; opacity:0.35; mix-blend-mode:screen; pointer-events:none; }
+        .v-ov { position:fixed; top:0; left:0; width:100vw; height:100vh; background:radial-gradient(circle, transparent, var(--bg) 95%); z-index:-1; }
+        
+        /* Header Premium */
+        header { position:sticky; top:0; z-index:100; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); background:rgba(7,16,29,0.75); border-bottom:1px solid rgba(255,255,255,0.1); padding:12px 20px; }
+        .nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; }
+        .brand { display:flex; align-items:center; gap:12px; }
+        .brand img { width:45px; height:45px; border-radius:12px; border:1px solid var(--yellow); }
+        
+        /* Contenido */
+        main { padding:40px 20px 140px; text-align:center; max-width:600px; margin:0 auto; }
+        h2 { font-size:2.5rem; font-weight:900; margin-bottom:30px; letter-spacing:-1.5px; line-height:1.1; }
+        .card { background:var(--glass); border:1px solid rgba(255,255,255,0.08); border-radius:28px; padding:20px; margin-bottom:20px; text-align:left; }
+        .card img { width:100%; height:160px; border-radius:18px; object-fit:cover; margin-bottom:15px; background:#161d2b; }
+
+        /* Player Dock */
+        .dock { position:fixed; bottom:25px; left:50%; transform:translateX(-50%); width:92%; max-width:420px; background:rgba(11,19,35,0.95); backdrop-filter:blur(25px); -webkit-backdrop-filter:blur(25px); border:1px solid rgba(255,255,255,0.1); border-radius:999px; padding:12px 25px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 20px 50px rgba(0,0,0,0.5); z-index:200; }
+        .play-btn { width:52px; height:52px; border-radius:50%; background:var(--yellow); border:none; color:#000; font-size:22px; cursor:pointer; box-shadow:0 0 20px rgba(255,212,77,0.4); }
+    </style>
 </head>
 <body>
-<video class="v-bg" autoplay loop muted playsinline><source src="./Assets/3ba6ee9d-c499-4083-9656-52fa7237856e.mp4" type="video/mp4"></video>
-<div class="ov"></div>
-<header><div class="nav"><div class="brand"><img src="./Assets/image_03d8d1.png"><div><h1 style="font-size:16px;font-weight:800">Conexión Latina</h1><p style="font-size:9px;color:var(--pink);font-weight:700">EDMONTON, AB</p></div></div></div></header>
-<main>
-<div style="color:var(--pink);font-weight:800;font-size:11px;margin-bottom:10px">🔴 EN VIVO</div>
-<h2>La Voz que <span style="color:var(--yellow)">Une</span> Alberta</h2>
-<div class="card"><img src="./Assets/noticia-1.png"><h3>Noticias IA</h3><p style="font-size:14px;color:#b9c3db">Información local en tiempo real.</p></div>
-<div class="card"><img src="./Assets/podcast-1.png"><h3>Historias Latinas</h3><p style="font-size:14px;color:#b9c3db">Podcast de nuestra comunidad.</p></div>
-</main>
-<div class="player">
-<div style="overflow:hidden"><p style="font-size:9px;color:var(--pink);font-weight:800">SONANDO</p><p id="t" style="font-size:13px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;overflow:hidden">Conectando...</p></div>
-<button class="btn" id="b" onclick="tk()">▶</button>
-</div>
-<script>
-// USANDO PROXY SEGURO PARA IPHONE (SIN PUERTO 8000)
-const u="https://radioconexionlatina.com/listen/radio/radio.mp3",a=new Audio();let s=0;
-function tk(){const b=document.getElementById('b');if(!s){a.src=u;a.play().then(()=>{b.innerText="⏸";s=1}).catch(()=>{a.src=u;a.play();b.innerText="⏸";s=1})}else{a.pause();a.src="";b.innerText="▶";s=0}}
-async function m(){try{const r=await fetch("https://radioconexionlatina.com/api/nowplaying/1"),d=await r.json();document.getElementById('t').innerText=d.now_playing.song.text}catch(e){}}
-m();setInterval(m,10000);
-</script>
+
+    <video class="v-bg" autoplay loop muted playsinline>
+        <source src="./Assets/3ba6ee9d-c499-4083-9656-52fa7237856e.mp4" type="video/mp4">
+    </video>
+    <div class="v-ov"></div>
+
+    <header>
+        <div class="nav">
+            <div class="brand">
+                <img src="./Assets/image_03d8d1.png" alt="Logo">
+                <div>
+                    <h1 style="font-size:16px; font-weight:800;">Conexión Latina</h1>
+                    <p style="font-size:9px; color:var(--pink); font-weight:700;">EDMONTON, AB</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div style="color:var(--pink); font-weight:800; font-size:11px; margin-bottom:10px;">🔴 EN VIVO</div>
+        <h2>La Voz que <span style="color:var(--yellow)">Une</span> Alberta</h2>
+
+        <div class="card">
+            <img src="./Assets/noticia-1.png" alt="Noticias">
+            <h3 style="color:var(--yellow);">Noticias IA</h3>
+            <p style="font-size:14px; color:#b9c3db;">Información local en tiempo real.</p>
+        </div>
+        <div class="card">
+            <img src="./Assets/podcast-1.png" alt="Podcast">
+            <h3 style="color:var(--pink);">Historias Latinas</h3>
+            <p style="font-size:14px; color:#b9c3db;">Podcast de nuestra comunidad.</p>
+        </div>
+    </main>
+
+    <div class="dock">
+        <div style="overflow:hidden;">
+            <p style="font-size:9px; color:var(--pink); font-weight:800; margin:0;">SONANDO</p>
+            <p id="t" style="font-size:14px; font-weight:700; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">Conectando al servidor...</p>
+        </div>
+        <button class="play-btn" id="b" onclick="tk()">▶</button>
+    </div>
+
+    <script>
+        // URL DE PROXY PARA EVITAR BLOQUEO DE APPLE
+        const u = "https://radioconexionlatina.com/listen/radio/radio.mp3";
+        let a = null;
+        let s = false;
+
+        function tk() {
+            const b = document.getElementById('b');
+            if (!s) {
+                if (!a) { a = new Audio(u); a.crossOrigin = "anonymous"; }
+                a.play().then(() => {
+                    b.innerHTML = "⏸";
+                    s = true;
+                }).catch(err => {
+                    a.src = u; a.play();
+                    b.innerHTML = "⏸";
+                    s = true;
+                });
+            } else {
+                a.pause(); a.src = ""; a.load();
+                b.innerHTML = "▶";
+                s = false;
+            }
+        }
+
+        async function m() {
+            try {
+                const r = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
+                const d = await r.json();
+                document.getElementById('t').innerText = d.now_playing.song.text;
+            } catch(e) {}
+        }
+        m(); setInterval(m, 10000);
+    </script>
 </body>
 </html>
