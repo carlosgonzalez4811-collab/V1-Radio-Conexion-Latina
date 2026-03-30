@@ -1,54 +1,35 @@
-<div class="grid">
-    <div class="card">
-        <img src="assets/noticia-1.png" alt="Noticia" onerror="this.src='./assets/noticia-1.png'; this.onerror=null;">
-        <h3>Flash Informativo IA</h3>
-        <p>Noticias locales en tiempo real.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Radio Conexión Latina</title>
+    <style>
+        :root { --bg:#07101d; --pink:#ff4d8d; --yellow:#ffd44d; --text:#f8f9ff; }
+        body { margin:0; background:var(--bg); color:var(--text); font-family:sans-serif; text-align:center; overflow-x:hidden; }
+        .v-bg { position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-2; opacity:0.3; pointer-events:none; }
+        header { padding:20px; background:rgba(0,0,0,0.5); border-bottom:1px solid rgba(255,255,255,0.1); }
+        .card { background:rgba(255,255,255,0.05); margin:20px; border-radius:20px; padding:20px; border:1px solid rgba(255,255,255,0.1); }
+        .card img { width:100%; border-radius:15px; margin-bottom:10px; }
+        .player { position:fixed; bottom:0; width:100%; background:rgba(11,19,35,0.95); padding:20px; border-top:1px solid var(--pink); display:flex; justify-content:space-between; align-items:center; }
+        .btn { width:50px; height:50px; border-radius:50%; background:var(--yellow); border:0; font-size:20px; cursor:pointer; }
+    </style>
+</head>
+<body>
+    <video class="v-bg" autoplay loop muted playsinline><source src="assets/3ba6ee9d-c499-4083-9656-52fa7237856e.mp4" type="video/mp4"></video>
+    <header><h1>Conexión Latina</h1><p style="color:var(--pink)">EDMONTON</p></header>
+    <main>
+        <div class="card"><img src="assets/noticia-1.png"><h3>Noticias IA</h3></div>
+        <div class="card"><img src="assets/podcast-1.png"><h3>Podcast</h3></div>
+    </main>
+    <div class="player">
+        <div id="t">Radio Conexión...</div>
+        <button class="btn" onclick="p()" id="b">▶</button>
     </div>
-    <div class="card">
-        <img src="assets/podcast-1.png" alt="Podcast" onerror="this.src='./assets/podcast-1.png'; this.onerror=null;">
-        <h3>Historias Latinas</h3>
-        <p>Podcast de nuestra comunidad.</p>
-    </div>
-</div>
-
-<script>
-    // URL SIN PUERTO 8000 (Evita el bloqueo de Apple)
-    const STREAM_URL = "https://radioconexionlatina.com/listen/radio/radio.mp3";
-    let audioObj = null;
-    let isPlaying = false;
-
-    function togglePlay() {
-        const btn = document.getElementById('playBtn');
-        if (!isPlaying) {
-            if (!audioObj) {
-                audioObj = new Audio(STREAM_URL);
-                audioObj.crossOrigin = "anonymous";
-            }
-            audioObj.play().then(() => {
-                btn.innerHTML = "⏸";
-                isPlaying = true;
-            }).catch(e => {
-                // Hard reset para iPhone
-                audioObj.src = STREAM_URL;
-                audioObj.play();
-                btn.innerHTML = "⏸";
-                isPlaying = true;
-            });
-        } else {
-            audioObj.pause();
-            audioObj.src = ""; // Detiene la descarga de datos
-            btn.innerHTML = "▶";
-            isPlaying = false;
-        }
-    }
-
-    // Metadatos automáticos
-    async function updateMetadata() {
-        try {
-            const r = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
-            const d = await r.json();
-            document.getElementById('track-title').innerText = d.now_playing.song.text;
-        } catch(e) {}
-    }
-    updateMetadata(); setInterval(updateMetadata, 15000);
-</script>
+    <script>
+        const u="https://radioconexionlatina.com/radio/8000/radio.mp3",a=new Audio();let s=0;
+        function p(){const b=document.getElementById('b');if(!s){a.src=u;a.play();b.innerText="⏸";s=1}else{a.pause();a.src="";b.innerText="▶";s=0}}
+        async function m(){try{const r=await fetch("https://radioconexionlatina.com/api/nowplaying/1"),d=await r.json();document.getElementById('t').innerText=d.now_playing.song.text}catch(e){}}
+        setInterval(m,15000);m();
+    </script>
+</body>
+</html>
