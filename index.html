@@ -152,6 +152,22 @@
         updateMeta();
         setInterval(updateMeta, 10000);
     </script>
+// SONDA DE DIAGNÓSTICO SENIOR (Borrar en producción)
+window.addEventListener('error', function(e) {
+  alert("🚨 Error de Código: " + e.message);
+}, true);
 
+audio.addEventListener('error', function(e) {
+  let errorMsg = "Desconocido";
+  if(audio.error) {
+    switch(audio.error.code) {
+      case 1: errorMsg = "Proceso abortado (Abort)"; break;
+      case 2: errorMsg = "Error de red (Revisa el puerto 8000 o SSL)"; break;
+      case 3: errorMsg = "Error de decodificación (Formato no soportado)"; break;
+      case 4: errorMsg = "Audio no encontrado (404) o bloqueado por Apple (CORS/SSL)"; break;
+    }
+  }
+  alert("🚨 ERROR DE RADIO: " + errorMsg + "\nURL: " + audio.src);
+});
 </body>
 </html>
