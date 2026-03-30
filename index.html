@@ -1,0 +1,54 @@
+<div class="grid">
+    <div class="card">
+        <img src="assets/noticia-1.png" alt="Noticia" onerror="this.src='./assets/noticia-1.png'; this.onerror=null;">
+        <h3>Flash Informativo IA</h3>
+        <p>Noticias locales en tiempo real.</p>
+    </div>
+    <div class="card">
+        <img src="assets/podcast-1.png" alt="Podcast" onerror="this.src='./assets/podcast-1.png'; this.onerror=null;">
+        <h3>Historias Latinas</h3>
+        <p>Podcast de nuestra comunidad.</p>
+    </div>
+</div>
+
+<script>
+    // URL SIN PUERTO 8000 (Evita el bloqueo de Apple)
+    const STREAM_URL = "https://radioconexionlatina.com/listen/radio/radio.mp3";
+    let audioObj = null;
+    let isPlaying = false;
+
+    function togglePlay() {
+        const btn = document.getElementById('playBtn');
+        if (!isPlaying) {
+            if (!audioObj) {
+                audioObj = new Audio(STREAM_URL);
+                audioObj.crossOrigin = "anonymous";
+            }
+            audioObj.play().then(() => {
+                btn.innerHTML = "⏸";
+                isPlaying = true;
+            }).catch(e => {
+                // Hard reset para iPhone
+                audioObj.src = STREAM_URL;
+                audioObj.play();
+                btn.innerHTML = "⏸";
+                isPlaying = true;
+            });
+        } else {
+            audioObj.pause();
+            audioObj.src = ""; // Detiene la descarga de datos
+            btn.innerHTML = "▶";
+            isPlaying = false;
+        }
+    }
+
+    // Metadatos automáticos
+    async function updateMetadata() {
+        try {
+            const r = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
+            const d = await r.json();
+            document.getElementById('track-title').innerText = d.now_playing.song.text;
+        } catch(e) {}
+    }
+    updateMetadata(); setInterval(updateMetadata, 15000);
+</script>
