@@ -1,173 +1,57 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Radio Conexión Latina Edmonton | En Vivo</title>
-    
-    <meta name="theme-color" content="#07101d">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="assets/image_03d8d1.png">
-
-    <style>
-        :root {
-            --bg: #07101d;
-            --glass: rgba(11, 19, 35, 0.85);
-            --border: rgba(255, 255, 255, 0.08);
-            --pink: #ff4d8d;
-            --yellow: #ffd44d;
-            --cyan: #45e0ff;
-            --text: #f8f9ff;
-            --muted: #b9c3db;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
-
-        /* Capa de Video Inmersivo */
-        .v-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; opacity: 0.35; mix-blend-mode: screen; pointer-events: none; }
-        .v-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: radial-gradient(circle at center, transparent, var(--bg) 95%); z-index: -1; }
-
-        /* Navegación */
-        header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(7, 16, 29, 0.75); border-bottom: 1px solid var(--border); padding: 12px 20px; }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand img { width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--border); }
-        .brand h1 { font-size: 1.1rem; font-weight: 800; background: linear-gradient(90deg, #fff, var(--yellow)); -webkit-background-clip: text; color: transparent; margin: 0; }
-
-        /* Contenido */
-        main { padding: 40px 20px 120px; text-align: center; max-width: 800px; margin: 0 auto; }
-        .live-badge { display: inline-block; background: rgba(255, 77, 141, 0.15); border: 1px solid var(--pink); color: var(--pink); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; }
-        h2 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 30px; font-weight: 900; letter-spacing: -1.5px; }
-
-        .grid { display: grid; gap: 20px; margin-top: 40px; }
-        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 28px; padding: 25px; text-align: left; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        .card img { width: 100%; height: 180px; border-radius: 20px; object-fit: cover; margin-bottom: 15px; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--cyan); }
-        .card p { font-size: 0.95rem; color: var(--muted); line-height: 1.5; }
-
-        /* Reproductor Estacionario (Dock) */
-        .player-dock { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: min(440px, 92%); background: rgba(11, 19, 35, 0.95); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--border); border-radius: 999px; padding: 12px 25px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 200; }
-        .info { display: flex; flex-direction: column; overflow: hidden; padding-right: 15px; }
-        .label { font-size: 9px; color: var(--pink); font-weight: 800; letter-spacing: 1px; margin-bottom: 2px; }
-        .track { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .play-btn { width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: var(--yellow); border: none; color: #000; font-size: 20px; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 20px rgba(255, 212, 77, 0.4); transition: transform 0.2s; }
-        .play-btn:active { transform: scale(0.92); }
-    </style>
-</head>
-<body>
-
-    <video class="v-bg" autoplay loop muted playsinline>
-        <source src="assets/3ba6ee9d-c499-4083-9656-52fa7237856e.mp4" type="video/mp4">
-    </video>
-    <div class="v-overlay"></div>
-
-    <header>
-        <div class="nav-flex">
-            <div class="brand">
-                <img src="assets/image_03d8d1.png" alt="RCL Logo">
-                <div class="brand-copy">
-                    <h1>Conexión Latina</h1>
-                    <p style="font-size: 9px; color: var(--pink); font-weight: 700; letter-spacing: 1px;">EDMONTON, AB</p>
-                </div>
-            </div>
-            <div style="font-size: 11px; font-weight: 900; background: rgba(0,0,0,0.3); padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border);">ES | EN | FR</div>
-        </div>
-    </header>
-
-    <main>
-        <div class="live-badge">🔴 EN VIVO AHORA</div>
-        <h2>La Voz que <span style="color: var(--yellow)">Une</span> Alberta.</h2>
-
-        <div class="grid">
-            <div class="card">
-                <img src="assets/noticia-1.png" alt="Noticias IA" onerror="this.src='https://via.placeholder.com/400x200/111323/45e0ff?text=Noticias+IA'">
-                <h3>Flash Informativo IA</h3>
-                <p>Información local procesada en tiempo real por Inteligencia Artificial.</p>
-            </div>
-            <div class="card">
-                <img src="assets/podcast-1.png" alt="Podcast" onerror="this.src='https://via.placeholder.com/400x200/111323/45e0ff?text=Historias+Latinas'">
-                <h3>Historias Latinas</h3>
-                <p>Entrevistas exclusivas con los emprendedores de nuestra comunidad.</p>
-            </div>
-        </div>
-    </main>
-
-    <div class="player-dock">
-        <div class="info">
-            <span class="label">SONANDO AHORA</span>
-            <span class="track" id="track-title">Conectando...</span>
-        </div>
-        <button class="play-btn" id="playBtn" onclick="toggleRadio()">▶</button>
+<div class="grid">
+    <div class="card">
+        <img src="./assets/noticia-1.png" alt="Noticias IA" onerror="this.src='https://via.placeholder.com/400x200/111323/45e0ff?text=Noticia+IA'">
+        <h3>Flash Informativo IA</h3>
+        <p>Información local procesada en tiempo real por Inteligencia Artificial.</p>
     </div>
+    <div class="card">
+        <img src="./assets/podcast-1.png" alt="Podcast" onerror="this.src='https://via.placeholder.com/400x200/111323/45e0ff?text=Podcast'">
+        <h3>Historias Latinas</h3>
+        <p>Entrevistas exclusivas con los emprendedores de nuestra comunidad.</p>
+    </div>
+</div>
 
-    <script>
-        const streamUrl = "https://radioconexionlatina.com/radio/8000/radio.mp3";
-        let audio = null;
-        let isPlaying = false;
+<script>
+    // USANDO PROXY URL PARA EVITAR BLOQUEO SSL EN IPHONE (PUERTO 443)
+    const streamUrl = "https://radioconexionlatina.com/listen/radio/radio.mp3";
+    let audio = null;
+    let isPlaying = false;
 
-        function toggleRadio() {
-            const btn = document.getElementById('playBtn');
-            
-            if (!isPlaying) {
-                if (!audio) {
-                    audio = new Audio(streamUrl);
-                    audio.preload = "none";
-                }
-                
-                const playPromise = audio.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        btn.innerHTML = "⏸";
-                        isPlaying = true;
-                    }).catch(error => {
-                        console.error("Reintento iOS:", error);
-                        audio.src = streamUrl;
-                        audio.play();
-                        btn.innerHTML = "⏸";
-                        isPlaying = true;
-                    });
-                }
-            } else {
-                audio.pause();
-                audio.src = ""; // Cortar descarga de datos
-                audio.load();
-                btn.innerHTML = "▶";
-                isPlaying = false;
+    function toggleRadio() {
+        const btn = document.getElementById('playBtn');
+        if (!isPlaying) {
+            if (!audio) {
+                audio = new Audio(streamUrl);
+                audio.preload = "none";
             }
+            audio.play().then(() => {
+                btn.innerHTML = "⏸";
+                isPlaying = true;
+            }).catch(e => {
+                // Segundo intento forzado para iOS
+                audio.src = streamUrl;
+                audio.play();
+                btn.innerHTML = "⏸";
+                isPlaying = true;
+            });
+        } else {
+            audio.pause();
+            audio.src = ""; 
+            audio.load();
+            btn.innerHTML = "▶";
+            isPlaying = false;
         }
-
-        async function updateMeta() {
-            try {
-                const res = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
-                const data = await res.json();
-                document.getElementById('track-title').innerText = data.now_playing.song.text || "Radio Conexión Latina";
-            } catch (e) {
-                document.getElementById('track-title').innerText = "Radio Conexión Latina Edmonton";
-            }
-        }
-
-        updateMeta();
-        setInterval(updateMeta, 10000);
-    </script>
-// SONDA DE DIAGNÓSTICO SENIOR (Borrar en producción)
-window.addEventListener('error', function(e) {
-  alert("🚨 Error de Código: " + e.message);
-}, true);
-
-audio.addEventListener('error', function(e) {
-  let errorMsg = "Desconocido";
-  if(audio.error) {
-    switch(audio.error.code) {
-      case 1: errorMsg = "Proceso abortado (Abort)"; break;
-      case 2: errorMsg = "Error de red (Revisa el puerto 8000 o SSL)"; break;
-      case 3: errorMsg = "Error de decodificación (Formato no soportado)"; break;
-      case 4: errorMsg = "Audio no encontrado (404) o bloqueado por Apple (CORS/SSL)"; break;
     }
-  }
-  alert("🚨 ERROR DE RADIO: " + errorMsg + "\nURL: " + audio.src);
-});
-</body>
-</html>
+
+    async function updateMeta() {
+        try {
+            const res = await fetch("https://radioconexionlatina.com/api/nowplaying/1");
+            const data = await res.json();
+            document.getElementById('track-title').innerText = data.now_playing.song.text || "Radio Conexión Latina";
+        } catch (e) {
+            document.getElementById('track-title').innerText = "Radio Conexión Latina Edmonton";
+        }
+    }
+    updateMeta();
+    setInterval(updateMeta, 10000);
+</script>
